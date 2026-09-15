@@ -1,0 +1,8 @@
+services:
+  streamlit:
+    build: ./src
+    working_dir: /app
+    volumes:
+      - ./src:/app
+    ports:
+      - "8501:8501"
