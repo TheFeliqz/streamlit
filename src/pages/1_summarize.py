@@ -1,16 +1,20 @@
 import streamlit as st
 
-name = st.text_input("Testinput")
+from services.summarize import summarize
 
-if st.button("Submit"):
-    st.write(f"Hello, {name}")
-
-
-# _________________________ #
 
 # File uploader
+uploaded_file = st.file_uploader("Upload File for Summarization here")
+
+if uploaded_file is not None:
+    file_text = uploaded_file.getvalue().decode("utf-8")
+    st.write(file_text)
+
 
 # "Summarize" Button
+if st.button("Summarize"):
+    summarize(file_text)
+
 
 # "Wating for Summary..." Display
 
