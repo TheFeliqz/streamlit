@@ -9,11 +9,11 @@ uploaded_file = st.file_uploader("Upload File for Summarization here")
 if uploaded_file is not None:
     file_text = uploaded_file.getvalue().decode("utf-8")
 
-    # Text preview
+    # Text preview (to check what I uploaded)
     st.text_area(
         "Document Preview",
-        file_text[:1000],
-        height=150,
+        file_text,
+        height=300,
         disabled=True
     )
 

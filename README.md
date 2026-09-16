@@ -1,6 +1,6 @@
 Entwickle eine kleine Streamlit-Applikation
 
-- Seite 1 – Dokument zusammenfassen: Dokument hochladen und über "summarize()" zusammenfassen lassen.
+DONE - Seite 1 – Dokument zusammenfassen: Dokument hochladen und über "summarize()" zusammenfassen lassen.
   Keywords: Document Upload, Summarization, LLM
 
 - Seite 2 – Wissensbasis aufbauen und befragen: Mehrere Handbücher nacheinander über "ingest()" einlesen. Anschließend können Fragen über ein Textfeld gestellt und über "answer()" mithilfe eines LLMs beantwortet werden.

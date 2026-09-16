@@ -1,25 +1,12 @@
 import os
 from openai import OpenAI
-from call_llm import call_llm
+from services.llm_call import llm_call
 
 def summarize(text):
+    # Check text length, if too long: chunk it (e.g. >10000 Words)
 
-    # Check text length, if too long: chunk it
+    instructions = "I want you to summarize the following text. Do not make up any facts and do not include new information, only summarize the given information."
 
-    promt = f"""
-        I want you to summarize the following text. Do not make up any facts and do not include new information, only summarize the given information.
-        
-        Text:
-        {text}
-    """
-
-    response = call_llm(promt)
-
-    # repose -> string
+    response = llm_call(prompt=text, instructions=instructions)
 
     return response
-
-    # send to llm
-    
-    # write response
-
