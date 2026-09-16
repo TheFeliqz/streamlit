@@ -14,7 +14,7 @@ if uploaded_file is not None:
 # "Summarize" Button
 if st.button("Summarize"):
     summarize(file_text)
-
+    
 
 # "Wating for Summary..." Display
 
