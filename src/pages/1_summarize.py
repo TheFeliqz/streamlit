@@ -8,14 +8,21 @@ uploaded_file = st.file_uploader("Upload File for Summarization here")
 
 if uploaded_file is not None:
     file_text = uploaded_file.getvalue().decode("utf-8")
-    st.write(file_text)
+
+    # Text preview
+    st.text_area(
+        "Document Preview",
+        file_text[:1000],
+        height=150,
+        disabled=True
+    )
 
 
-# "Summarize" Button
+# Summary 
 if st.button("Summarize"):
-    summarize(file_text)
-    
+    with st.spinner("Generating summary..."):
+        summary = summarize(file_text)
 
-# "Wating for Summary..." Display
+    st.success("Summary generated")
+    st.write(summary)
 
-# Display the answer when its ready

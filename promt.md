@@ -10,3 +10,5 @@ Erweiterte Ausprägung: Anstelle der direkt in die Streamlit-Anwendung eingebett
 
 END OF ASSIGNMENT____
 
+
+https://platform.openai.com/settings/organization/api-keys
