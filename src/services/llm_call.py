@@ -26,4 +26,4 @@ def llm_call(prompt, model, instructions):
         input = prompt,
     )
 
-    return response.output_text # this has to be a string
+    return response.output_text # returns LLM answer as a string
