@@ -7,6 +7,6 @@ def summarize(text):
 
     instructions = "I want you to summarize the following text. Do not make up any facts and do not include new information, only summarize the given information."
 
-    response = llm_call(prompt=text, instructions=instructions)
+    response = llm_call(prompt=text, model="summarize", instructions=instructions)
 
     return response

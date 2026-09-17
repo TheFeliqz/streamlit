@@ -6,17 +6,22 @@ from dotenv import load_dotenv
 # load .env variables
 load_dotenv()
 
-
 # client to call the api
 client = OpenAI(
     api_key = os.getenv("OPENAI_API_KEY")
 )
 
-
 # function to call api and get response
-def llm_call(prompt, instructions):
+def llm_call(prompt, model, instructions):
+    if model == "summarize":
+        model = os.getenv("MODEL_SUMMARIZE")
+    elif model == "answer":
+        model = os.getenv("MODEL_ANSWER")
+    else:
+        model = None
+
     response = client.responses.create(
-        model = os.getenv("MODEL_SUMMARIZE"),
+        model = os.getenv(model),
         instructions = instructions,
         input = prompt,
     )
