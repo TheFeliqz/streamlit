@@ -1,7 +1,6 @@
 import streamlit as st
 
-st.title ("Document Summary")
-
+st.title ("Document Processor")
 
 pages = [
     st.Page("pages/1_summarize.py", title="Summarize"),

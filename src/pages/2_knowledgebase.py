@@ -2,9 +2,19 @@ import streamlit as st
 from services.ingest import ingest
 from services.answer import answer
 
-
 # File Uploader
 uploaded_files = st.file_uploader("Upload File(s) to build knowledge base here",accept_multiple_files=True)
+
+if uploaded_files is not None:
+    # Text preview (to check what I uploaded)
+    for file in uploaded_files:
+        st.text_area(
+            "Document Preview",
+            file.getvalue().decode("utf-8"),
+            height=200,
+            disabled=True
+        )
+
 
 # Ingest
 if st.button("Ingest"):
