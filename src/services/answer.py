@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
 
-from components.llm_response import llm_response
-from components.llm_embedding import llm_embedding
+from components.llm_call import llm_response
+from components.llm_call import llm_embedding
 from components.vector_store import find_chunks_in_vector_store
 
 # load .env variables
