@@ -1,6 +1,4 @@
-import os
-from openai import OpenAI
-from services.llm_call import llm_call
+from components.llm_call import llm_call
 
 def answer(question):
     # embed the question
