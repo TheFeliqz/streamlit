@@ -15,7 +15,6 @@ if uploaded_files is not None:
             disabled=True
         )
 
-
 # Ingest
 if st.button("Ingest"):
     if not uploaded_files:

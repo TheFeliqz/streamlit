@@ -11,7 +11,6 @@ def store_in_vector_store(chunks, embeddings):
         embeddings=embeddings
     )
 
-
 def find_chunks_in_vector_store(question_embedding):
     closest_chunks = collection.query(
         query_embeddings=question_embedding,

@@ -2,7 +2,6 @@ import streamlit as st
 
 from services.summarize import summarize
 
-
 # File Uploader
 uploaded_file = st.file_uploader("Upload File for Summarization here")
 
@@ -14,7 +13,6 @@ if uploaded_file is not None:
         height=300,
         disabled=True
     )
-
 
 # Summary 
 if st.button("Summarize"):
@@ -29,4 +27,3 @@ if st.button("Summarize"):
 
         st.success("Summary generated")
         st.write(summary)
-

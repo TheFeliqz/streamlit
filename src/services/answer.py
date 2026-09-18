@@ -14,7 +14,6 @@ def answer(question):
     closest_chunks = find_chunks_in_vector_store(question_embedding)  # this is a list of strings
 
     prompt = f"Question:\n{question}\n\n"
-
     for i, chunk in enumerate(closest_chunks, start=1):
         prompt += f"Information {i}:\n"
         prompt += chunk
