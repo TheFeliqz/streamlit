@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 from components.chunk import chunk
 from components.embed import embed
-from components.store_in_vector_store import store_in_vector_store
+from components.vector_store import store_in_vector_store
 
 # load .env variables
 load_dotenv()
