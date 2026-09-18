@@ -1,13 +1,23 @@
 import os
 from openai import OpenAI
 
+from services.chunk import chunk
+
+# function gets a list of file objects
 def ingest(files):
-    pass
 
-    # for every file from the uploaded files
+    for file in files:
 
-        # chunk file (size of chunks, overlap of chunks)
-        
-        # embed chunk
+        # chunk parameters
+        chunk_size = 1000
+        chunk_overlap = 250
 
-        # store chunk (text + embedding) in vector store
+        # chunk text of the current file
+        file_text = file.getvalue().decode("utf-8")
+        chunks = chunk(file_text, chunk_size, chunk_overlap)
+
+        for text in chunks:
+            pass
+            # embed chunk (sentence-transformers; )
+
+            # store chunk (text + embedding) in vector store (chromadb)
