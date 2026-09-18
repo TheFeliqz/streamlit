@@ -2,7 +2,6 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv
 
-
 # load .env variables
 load_dotenv()
 
@@ -14,9 +13,9 @@ client = OpenAI(
 # function to call api and get response
 def llm_call(prompt, model, instructions):
     if model == "summarize":
-        model = os.getenv("MODEL_SUMMARIZE")
+        model = os.getenv("LLM_MODEL_SUMMARIZE")
     elif model == "answer":
-        model = os.getenv("MODEL_ANSWER")
+        model = os.getenv("LLM_MODEL_ANSWER")
     else:
         model = None
 
