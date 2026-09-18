@@ -1,23 +1,24 @@
 import os
-from openai import OpenAI
+from dotenv import load_dotenv
 
-from services.chunk import chunk
+from components.chunk import chunk
+from components.embed import embed
+from components.store_in_vector_store import store_in_vector_store
+
+# load .env variables
+load_dotenv()
 
 # function gets a list of file objects
 def ingest(files):
 
     for file in files:
+        file_text = file.getvalue().decode("utf-8")
 
-        # chunk parameters
         chunk_size = 1000
         chunk_overlap = 250
 
-        # chunk text of the current file
-        file_text = file.getvalue().decode("utf-8")
-        chunks = chunk(file_text, chunk_size, chunk_overlap)
+        chunks = chunk(file_text, chunk_size, chunk_overlap)  # returns a list of strings (chunks of text)
 
-        for text in chunks:
-            pass
-            # embed chunk (sentence-transformers; )
+        embeddings = embed(chunks, embedding_model=os.getenv("EMBEDDING_MODEL"))  # returns a list of lists (vectors)
 
-            # store chunk (text + embedding) in vector store (chromadb)
+        store_in_vector_store(chunks, embeddings)

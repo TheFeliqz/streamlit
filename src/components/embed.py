@@ -6,3 +6,6 @@ def embed(chunks, embedding_model):
     list_embeddings = numpy_embeddings.tolist()
 
     return list_embeddings
+
+#TODO add distinction that allow not only "encode" but separate between document and query (store and question)
+# see: https://huggingface.co/google/embeddinggemma-300m
