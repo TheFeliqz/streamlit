@@ -2,10 +2,8 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# load .env variables
 load_dotenv()
 
-# client to call the api
 client = OpenAI(
     api_key = os.getenv("OPENAI_API_KEY")
 )
@@ -17,7 +15,7 @@ def llm_response(prompt, model, instructions):
         input = prompt,
     )
 
-    return response.output_text # returns LLM answer as a string
+    return response.output_text
 
 def llm_embedding(chunks, model):
     response = client.embeddings.create(

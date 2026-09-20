@@ -34,4 +34,12 @@ streamlit run src/app.py
 docker-compose up --build
 ```
 
+## Future Ideas
+
+- implement with FastAPI 
+- change ChromaDB to store data in persistent memory or cloud https://docs.trychroma.com/docs/run-chroma/clients
+- let the user select a difficulty/complexity of own question, internally changing the number of chunks used for answering the question (e.g. easy, medium, hard)
+- delete button to clear uploaded file(s)
+- delete button to clear ingested files
+
 last updated: 20.09.2026

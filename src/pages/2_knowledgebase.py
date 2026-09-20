@@ -6,7 +6,7 @@ from services.answer import answer
 uploaded_files = st.file_uploader("Upload File(s) to build knowledge base here",accept_multiple_files=True)
 
 if uploaded_files is not None:
-    # Text preview (to check what I uploaded)
+    # Text preview (to check what the user uploaded)
     for file in uploaded_files:
         st.text_area(
             "Document Preview",

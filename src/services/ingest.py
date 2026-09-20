@@ -8,7 +8,6 @@ from components.vector_store import store_in_vector_store
 # load .env variables
 load_dotenv()
 
-# function gets a list of file objects
 def ingest(files):
 
     for file in files:

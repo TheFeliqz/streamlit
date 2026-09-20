@@ -6,7 +6,7 @@ from services.summarize import summarize
 uploaded_file = st.file_uploader("Upload File for Summarization here")
 
 if uploaded_file is not None:
-    # Text preview (to check what I uploaded)
+    # Text preview (to check what the user uploaded)
     st.text_area(
         "Document Preview",
         uploaded_file.getvalue().decode("utf-8"),
