@@ -2,3 +2,4 @@
 .env
 src/services/__pycache__
 src/components/__pycache__
+prompt.md
