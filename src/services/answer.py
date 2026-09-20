@@ -8,10 +8,17 @@ from components.vector_store import find_chunks_in_vector_store
 # load .env variables
 load_dotenv()
 
-def answer(question):
+def answer(question, complexity):
     question_embedding = llm_embedding([question], model=os.getenv("EMBEDDING_MODEL"))
 
-    closest_chunks = find_chunks_in_vector_store(question_embedding)
+    if complexity == "Easy":
+        number_of_chunks = 2
+    elif complexity == "Medium":
+        number_of_chunks = 5
+    elif complexity == "Hard":
+        number_of_chunks = 10
+
+    closest_chunks = find_chunks_in_vector_store(question_embedding, number_of_chunks)
 
     prompt = ""
     for i, chunk in enumerate(closest_chunks, start=1):

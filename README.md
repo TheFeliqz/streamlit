@@ -38,7 +38,6 @@ docker-compose up --build
 
 - implement with FastAPI 
 - change ChromaDB to store data in persistent memory or cloud https://docs.trychroma.com/docs/run-chroma/clients
-- let the user select a difficulty/complexity of own question, internally changing the number of chunks used for answering the question (e.g. easy, medium, hard)
 - delete button to clear ingested files
 
-last updated: 20.09.2026
+last updated: 21.09.2026, 02:00

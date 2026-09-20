@@ -2,7 +2,7 @@ import chromadb
 import uuid
 
 client = chromadb.Client()
-collection = client.create_collection(name="manuals", embedding_function=None)
+collection = client.get_or_create_collection(name="manuals", embedding_function=None)
 
 def store_in_vector_store(chunks, embeddings):
     collection.add(
@@ -11,10 +11,10 @@ def store_in_vector_store(chunks, embeddings):
         embeddings=embeddings
     )
 
-def find_chunks_in_vector_store(question_embedding):
+def find_chunks_in_vector_store(question_embedding, number_of_chunks):
     closest_chunks = collection.query(
         query_embeddings=question_embedding,
-        n_results=100
+        n_results=number_of_chunks
     )
 
     return closest_chunks["documents"][0]
