@@ -1,17 +1,37 @@
-Entwickle eine kleine Streamlit-Applikation
+# Document Processor
 
-DONE - Seite 1 – Dokument zusammenfassen: Dokument hochladen und über "summarize()" zusammenfassen lassen.
-  Keywords: Document Upload, Summarization, LLM
+A small Streamlit app for summarizing documents and building a searchable knowledgebase with retrieval-augmented Q&A.
 
-- Seite 2 – Wissensbasis aufbauen und befragen: Mehrere Handbücher nacheinander über "ingest()" einlesen. Anschließend können Fragen über ein Textfeld gestellt und über "answer()" mithilfe eines LLMs beantwortet werden.
-  Keywords: RAG, Ingestion, Chunking, Embeddings, Vector Store, Retrieval, LLM
+## Features
 
-Erweiterte Ausprägung: Anstelle der direkt in die Streamlit-Anwendung eingebetteten Funktionen summarize, ingest und answer wird eine separate FastAPI-Schicht bereitgestellt. Diese stellt die Endpunkte /summarize, /ingest und /answer bereit, mit denen die Streamlit-Anwendung kommuniziert.
+**Page 1 — Summarize**
+Upload a document and summarize its content.
 
+**Page 2 — Knowledge Base**
+Ingest multiple documents into a vector store (ChromaDB), then ask questions about this information.
 
-.env needs
-OPENAI_API_KEY=...
+## Setup
+
+Create a `.env` file (recommendations for models is given):
+
+```env
+OPENAI_API_KEY=sk-...
+
 LLM_MODEL_SUMMARIZE=gpt-5-nano
 LLM_MODEL_ANSWER=gpt-5-nano
-EMBEDDING_MODEL=google/embeddinggemma-300m
 
+EMBEDDING_MODEL=google/embeddinggemma-300m
+```
+
+**Run locally:**
+```bash
+pip install -r requirements.txt
+streamlit run src/app.py
+```
+
+**Run with Docker:**
+```bash
+docker-compose up --build
+```
+
+last updated: 20.09.2026
