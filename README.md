@@ -1,6 +1,6 @@
 # Document Processor
 
-A small Streamlit app for summarizing documents and building a searchable knowledgebase with retrieval-augmented Q&A.
+A small Streamlit app for summarizing documents and building a searchable knowledge base with retrieval-augmented Q&A.
 
 ## Features
 
@@ -20,7 +20,7 @@ OPENAI_API_KEY=sk-...
 LLM_MODEL_SUMMARIZE=gpt-5-nano
 LLM_MODEL_ANSWER=gpt-5-nano
 
-EMBEDDING_MODEL=google/embeddinggemma-300m
+EMBEDDING_MODEL=text-embedding-3-small
 ```
 
 **Run locally:**
