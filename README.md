@@ -37,7 +37,6 @@ docker-compose up --build
 ## Future Ideas
 
 - implement with FastAPI 
-- change ChromaDB to store data in persistent memory or cloud https://docs.trychroma.com/docs/run-chroma/clients
-- delete button to clear ingested files
+- delete button to clear ingested files https://docs.trychroma.com/docs/run-chroma/clients
 
 last updated: 21.09.2026, 02:00

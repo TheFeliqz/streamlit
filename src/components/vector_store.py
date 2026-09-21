@@ -1,7 +1,7 @@
 import chromadb
 import uuid
 
-client = chromadb.Client()
+client = chromadb.PersistentClient()
 collection = client.get_or_create_collection(name="manuals", embedding_function=None)
 
 def store_in_vector_store(chunks, embeddings):
@@ -18,3 +18,9 @@ def find_chunks_in_vector_store(question_embedding, number_of_chunks):
     )
 
     return closest_chunks["documents"][0]
+
+def clear_vector_store():
+    if collection.count() == 0:
+        pass
+    else:
+        collection.delete(ids=collection.get()["ids"])
