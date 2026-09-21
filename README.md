@@ -40,3 +40,5 @@ docker-compose up --build
 - delete button to clear ingested files https://docs.trychroma.com/docs/run-chroma/clients
 
 last updated: 21.09.2026, 02:00
+
+test
