@@ -21,31 +21,39 @@ if st.button("Ingest"):
 
 
 
-st.markdown("## Delete files from the Knowledge Base")
+st.markdown("## Clear files from the Knowledge Base")
 
 # Overview of files stored in vector store
-# add storing source document of a chunk into the vector store and then write all unique document names 
-pass
+#TODO add storing source document of a chunk into the vector store and then write all unique document names 
 
-import streamlit as st
+if "cleared" not in st.session_state:
+    st.session_state.cleared = False
 
-# Confirmation window to delete Knowledge Base
-@st.dialog("Confirm deletion")
+# Confirmation window to clear Knowledge Base
+@st.dialog("Confirm clearing")
 def confirm_delete():
-    st.write("Are you sure you want to delete this collection?")
+    st.write("Are you sure you want to clear the Knowledge Base?")
 
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        if st.button("Yes, delete"):
+        if st.button("Yes, clear"):
             clear_vector_store()
+            st.session_state.cleared = True
             st.rerun()
+
     with col2:
         if st.button("Cancel"):
             st.rerun()
 
-if st.button("Delete collection"):
+# Button to clear Knowledge Base
+if st.button("Clear Knowledge Base"):
     confirm_delete()
+
+# Confirmation for the user that Knowledge Base has been cleared
+if st.session_state.cleared:
+    st.success("Knowledge Base cleared")
+    st.session_state.cleared = False
 
 
 
