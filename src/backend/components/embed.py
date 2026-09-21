@@ -1,4 +1,4 @@
-from components.llm_call import llm_embedding
+from backend.components.llm_call import llm_embedding
 
 def embed(chunks, embedding_model):
     return llm_embedding(chunks,embedding_model)

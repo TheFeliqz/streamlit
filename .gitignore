@@ -1,6 +1,4 @@
 .venv
 .env
-src/services/__pycache__
-src/components/__pycache__
-prompt.md
-src/chroma
+__pycache__
+chroma

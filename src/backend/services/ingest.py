@@ -1,9 +1,9 @@
 import os
 from dotenv import load_dotenv
 
-from components.chunk import chunk
-from components.embed import embed
-from components.vector_store import store_in_vector_store
+from backend.components.chunk import chunk
+from backend.components.embed import embed
+from backend.components.vector_store import store_in_vector_store
 
 # load .env variables
 load_dotenv()

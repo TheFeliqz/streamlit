@@ -1,9 +1,5 @@
 import streamlit as st
 
-from services.ingest import ingest
-from services.answer import answer
-from components.vector_store import clear_vector_store
-
 st.markdown("## Add files to the Knowledge Base")
 
 # File Uploader

@@ -1,7 +1,5 @@
 import streamlit as st
 
-from services.summarize import summarize
-
 st.markdown("## Summarize a Document")
 
 # File Uploader
