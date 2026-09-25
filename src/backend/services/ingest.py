@@ -1,9 +1,9 @@
 import os
 from dotenv import load_dotenv
 
-from backend.components.chunk import chunk
-from backend.components.embed import embed
-from backend.components.vector_store import store_in_vector_store
+from components.chunk import chunk
+from components.embed import embed
+from components.vector_store import store_in_vector_store
 
 # load .env variables
 load_dotenv()
@@ -11,7 +11,8 @@ load_dotenv()
 def ingest(files):
 
     for file in files:
-        file_text = file.getvalue().decode("utf-8")
+        file_text = file.file.read().decode("utf-8")
+        file_name = file.filename
 
         chunk_size = 1000
         chunk_overlap = 250
@@ -20,4 +21,4 @@ def ingest(files):
 
         embeddings = embed(chunks, embedding_model=os.getenv("EMBEDDING_MODEL"))  # returns a list of lists (vectors)
 
-        store_in_vector_store(chunks, embeddings)
+        store_in_vector_store(chunks, embeddings, file_name)

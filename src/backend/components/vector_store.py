@@ -4,11 +4,12 @@ import uuid
 client = chromadb.PersistentClient()
 collection = client.get_or_create_collection(name="manuals", embedding_function=None)
 
-def store_in_vector_store(chunks, embeddings):
+def store_in_vector_store(chunks, embeddings, name):
     collection.add(
         ids = [str(uuid.uuid4()) for _ in chunks],
         documents=chunks,
-        embeddings=embeddings
+        embeddings=embeddings,
+        metadatas=[{"file_name": name} for _ in chunks]
     )
 
 def find_chunks_in_vector_store(question_embedding, number_of_chunks):

@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-from backend.components.llm_call import llm_response
+from components.llm_call import llm_response
 
 # load .env variables
 load_dotenv()

@@ -11,10 +11,11 @@ if st.button("Ingest"):
         st.warning("Please select at least one file.")
     else:
         with st.spinner("Ingesting..."):
-            ingest(uploaded_files)
+            files_data = [("files",(file.name, file.getvalue())) for file in uploaded_files]
 
-        st.success("Files ingested")
+            ingest(uploaded_files) #TODO HTTP Request with file values
 
+        st.success("Files ingested") #TODO return information to user depending on if the ingest failed
 
 
 st.markdown("## Clear files from the Knowledge Base")
