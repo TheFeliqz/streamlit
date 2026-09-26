@@ -1,4 +1,10 @@
+import os
+from dotenv import load_dotenv
 import streamlit as st
+import httpx
+
+# load .env variables
+load_dotenv()
 
 st.markdown("## Summarize a Document")
 
@@ -23,7 +29,16 @@ if st.button("Summarize"):
     else:
         file_text = uploaded_file.getvalue().decode("utf-8")
         with st.spinner("Generating summary..."):
-            summary = summarize(file_text)
+
+            payload = {"file_text": file_text}
+            response = httpx.post(
+                f"{os.getenv("BACKEND_URL")}/summarize",
+                json = payload,
+                timeout=30.0
+            )
+
+            data = response.json()
+            summary = data["summary"] 
 
         st.success("Summary generated")
         st.write(summary)
