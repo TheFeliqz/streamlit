@@ -1,4 +1,10 @@
 import streamlit as st
+import httpx
+import os
+from dotenv import load_dotenv
+
+# load .env variables
+load_dotenv()
 
 st.markdown("## Add files to the Knowledge Base")
 
@@ -13,7 +19,11 @@ if st.button("Ingest"):
         with st.spinner("Ingesting..."):
             files_data = [("files",(file.name, file.getvalue())) for file in uploaded_files]
 
-            ingest(uploaded_files) #TODO HTTP Request with file values
+            response = httpx.post(
+                f"{os.getenv("BACKEND_URL")}/ingest",
+                files = files_data,
+                timeout=120.0
+            )
 
         st.success("Files ingested") #TODO return information to user depending on if the ingest failed
 
@@ -35,7 +45,7 @@ def confirm_delete():
 
     with col1:
         if st.button("Yes, clear"):
-            clear_vector_store()
+            httpx.delete(f"{os.getenv("BACKEND_URL")}/clear_vector_store", timeout=30.0)
             st.session_state.cleared = True
             st.rerun()
 
@@ -77,7 +87,14 @@ if st.button("Answer"):
         st.warning("Please enter a question")
     else:
         with st.spinner("Answering..."):
-            response = answer(question, complexity)
+            payload = {"question_text": question, "complexity": complexity}
+            response = httpx.post(
+                f"{os.getenv("BACKEND_URL")}/answer",
+                json = payload,
+                timeout=30.0
+            )
+            data = response.json()
+            answer = data["answer"] 
 
         st.success("Done")
-        st.write(response)
+        st.write(answer)
