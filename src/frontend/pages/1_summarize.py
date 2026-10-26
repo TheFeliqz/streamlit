@@ -21,8 +21,9 @@ if uploaded_file is not None:
     )
 
 # Summary 
-if st.button("Summarize"):
+summary_length = st.text_input("How long should the summary be? (percent or number of words)")
 
+if st.button("Summarize"):
     if uploaded_file is None:
         st.warning("Please select a file.")
 
@@ -30,11 +31,11 @@ if st.button("Summarize"):
         file_text = uploaded_file.getvalue().decode("utf-8")
         with st.spinner("Generating summary..."):
 
-            payload = {"file_text": file_text}
+            payload = {"file_text": file_text, "summary_length": summary_length}
             response = httpx.post(
                 f"{os.getenv("BACKEND_URL")}/summarize",
                 json = payload,
-                timeout=30.0
+                timeout=60.0
             )
 
             data = response.json()

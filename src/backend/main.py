@@ -11,11 +11,10 @@ app = FastAPI()
 
 
 @app.post("/summarize", response_model=SummarizeResponse)
-def api_summarize(file_text: SummarizeRequest):
-    return SummarizeResponse(summary = summarize(file_text.file_text))
+def api_summarize(request: SummarizeRequest):
+    return SummarizeResponse(summary = summarize(request.file_text, request.summary_length))
 
 
-# DONE
 @app.post("/ingest")
 def api_ingest(files: list[UploadFile]):
     ingest(files)

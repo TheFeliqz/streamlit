@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 class SummarizeRequest(BaseModel):
     file_text: str
+    summary_length: str
 
 class SummarizeResponse(BaseModel):
     summary: str
